@@ -1,0 +1,119 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Pr&aacute;ctica 3: Se&ntilde;ales en tiempo discreto</title><meta name="generator" content="MATLAB 9.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-11-10"><meta name="DC.source" content="Practica3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Pr&aacute;ctica 3: Se&ntilde;ales en tiempo discreto</h1><!--introduction--><p>Caudillo Barbosa Eric Olea Garc&iacute;a Bryan</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos</a></li><li><a href="#2">Introducci&oacute;n</a></li><li><a href="#3">Crea una funci&oacute;n que se llame fun1 y reciba dos parametros <img src="Practica3_eq01003107565813904020.png" alt="$\Omega$"> y <img src="Practica3_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe regresar la evaluaci&oacute;n <img src="Practica3_eq03646802660506946535.png" alt="$f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$">, esta funci&oacute;n debe trabajar con <img src="Practica3_eq02250910504099747793.png" alt="$r\in R^+$">, <img src="Practica3_eq16652459112341690445.png" alt="$\Omega\in R$"> y <img src="Practica3_eq13105139821992525800.png" alt="$n\in  N^n$">.</a></li><li><a href="#4">Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="Practica3_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> para <img src="Practica3_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="Practica3_eq00212765013998882747.png" alt="$a=0.9$"></a></li><li><a href="#5">Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="Practica3_eq08869918233192190351.png" alt="$f[n]$"> para <img src="Practica3_eq12706977765372392117.png" alt="$r=1.1$">, <img src="Practica3_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="Practica3_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="Practica3_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> y <img src="Practica3_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"></a></li></ul></div><h2 id="1">Objetivos</h2><div><ul><li>Manipulaci&oacute;n b&aacute;sica de MATLAB</li><li>Gr&aacute;ficas de se&ntilde;ales reales y complejas discretas</li><li>Transformaci&oacute;n de se&ntilde;ales discretas (escalamientos y traslaciones)</li><li>Calculo de energ&iacute;a y potencia de se&ntilde;ales discretas</li></ul></div><h2 id="2">Introducci&oacute;n</h2><p>DESCRIPTIVE TEXT</p><h2 id="3">Crea una funci&oacute;n que se llame fun1 y reciba dos parametros <img src="Practica3_eq01003107565813904020.png" alt="$\Omega$"> y <img src="Practica3_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe regresar la evaluaci&oacute;n <img src="Practica3_eq03646802660506946535.png" alt="$f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$">, esta funci&oacute;n debe trabajar con <img src="Practica3_eq02250910504099747793.png" alt="$r\in R^+$">, <img src="Practica3_eq16652459112341690445.png" alt="$\Omega\in R$"> y <img src="Practica3_eq13105139821992525800.png" alt="$n\in  N^n$">.</h2><pre class="language-matlab"><span class="keyword">function</span> f= fun1( W,n,r )
+f=(r.^n.*cos(W.*n))+(r.^n.*sin(W.*n).*i);
+<span class="keyword">end</span>
+</pre><h2 id="4">Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="Practica3_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> para <img src="Practica3_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="Practica3_eq00212765013998882747.png" alt="$a=0.9$"></h2><pre class="codeinput">f=@(n,a) (n.*a.^n).*heaviside(n);
+n=-2:10;
+Gd2(n,f(n,0.9))
+</pre><img vspace="5" hspace="5" src="Practica3_01.png" alt=""> <h2 id="5">Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="Practica3_eq08869918233192190351.png" alt="$f[n]$"> para <img src="Practica3_eq12706977765372392117.png" alt="$r=1.1$">, <img src="Practica3_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="Practica3_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="Practica3_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> y <img src="Practica3_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"></h2><pre class="codeinput">n=-2:20;
+Gd3(n,real(fun1(0.5,n,1.1)),imag(fun1(0.5,n,1.1)))
+subplot(1,2,1)
+plot(n,abs(fun1(0.5,n,1.1)))
+subplot(1,2,2)
+plot(n,atan2(fun1(0.5,n,1.1)))
+</pre><pre class="codeoutput error">Error using atan2
+Not enough input arguments.
+
+Error in Practica3 (line 29)
+plot(n,atan2(fun1(0.5,n,1.1)))
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Práctica 3: Señales en tiempo discreto
+% Caudillo Barbosa Eric
+% Olea García Bryan
+%% Objetivos
+% 
+% * Manipulación básica de MATLAB
+% * Gráficas de señales reales y complejas discretas
+% * Transformación de señales discretas (escalamientos y traslaciones)
+% * Calculo de energía y potencia de señales discretas
+% 
+%% Introducción
+% DESCRIPTIVE TEXT
+%% Crea una función que se llame fun1 y reciba dos parametros $\Omega$ y $a$ la función debe regresar la evaluación $f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$, esta función debe trabajar con $r\in R^+$, $\Omega\in R$ y $n\in  N^n$.
+%   
+%   function f= fun1( W,n,r )
+%   f=(r.^n.*cos(W.*n))+(r.^n.*sin(W.*n).*i);
+%   end
+% 
+%% Construya una función que gráfique funciones de $f:N\rightarrow R$ en el formato de su elección y pruebe su código mostrando la gráfica de $x[n]=na^nu[n]$ vs $n$ para $n\in {-2,...,10}$ para $a=0.9$
+f=@(n,a) (n.*a.^n).*heaviside(n);
+n=-2:10;
+Gd2(n,f(n,0.9))
+%% Construya una función que gráfique funciones de $f:N\rightarrow R^2$ en el formato de su elección y pruebe su código mostrando la gráfica de la función exponencial del primer problema, no debe incluir el código, solo el uso de la función para mostrarla gráfica. Reporte la gráfica de $f[n]$ para $r=1.1$, $\Omega=0.5$ y $n\in{-2,...,20}$ (recuerde que ya tiene una función para esto). Reporte la gráfica de $|f[n]|$ vs $n$ y $\angle f[n]$ vs $n$
+n=-2:20;
+Gd3(n,real(fun1(0.5,n,1.1)),imag(fun1(0.5,n,1.1)))
+subplot(1,2,1)
+plot(n,abs(fun1(0.5,n,1.1)))
+subplot(1,2,2)
+plot(n,atan2(fun1(0.5,n,1.1)))
+
+##### SOURCE END #####
+--></body></html>
