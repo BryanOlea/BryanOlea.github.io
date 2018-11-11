@@ -59,4 +59,4 @@ Gd2(n,x(n./3))
 title('x(n/3)','Interpreter','latex');
 %x[3-n]
 Gd2(n,x(3-n))
-title('x(n-3)','Interpreter','latex');
+title('x(3-n)','Interpreter','latex');
