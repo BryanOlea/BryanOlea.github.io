@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Pr&aacute;ctica 3: Se&ntilde;ales en tiempo discreto</title><meta name="generator" content="MATLAB 9.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-11-11"><meta name="DC.source" content="Practica3.m"><style type="text/css">
+      --><title>Pr&aacute;ctica 3: Se&ntilde;ales en tiempo discreto</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-11-16"><meta name="DC.source" content="Practica3.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,24 +66,48 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Pr&aacute;ctica 3: Se&ntilde;ales en tiempo discreto</h1><!--introduction--><p>Caudillo Barbosa Eric Olea Garc&iacute;a Bryan</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos</a></li><li><a href="#2">Introducci&oacute;n</a></li><li><a href="#3">1.-Crea una funci&oacute;n que se llame fun1 y reciba dos parametros <img src="Practica3_eq01003107565813904020.png" alt="$\Omega$"> y <img src="Practica3_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe regresar la evaluaci&oacute;n <img src="Practica3_eq03646802660506946535.png" alt="$f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$">, esta funci&oacute;n debe trabajar con <img src="Practica3_eq02250910504099747793.png" alt="$r\in R^+$">, <img src="Practica3_eq16652459112341690445.png" alt="$\Omega\in R$"> y <img src="Practica3_eq13105139821992525800.png" alt="$n\in  N^n$">.</a></li><li><a href="#4">2.-Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="Practica3_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> para <img src="Practica3_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="Practica3_eq00212765013998882747.png" alt="$a=0.9$"></a></li><li><a href="#5">3.-Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="Practica3_eq08869918233192190351.png" alt="$f[n]$"> para <img src="Practica3_eq12706977765372392117.png" alt="$r=1.1$">, <img src="Practica3_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="Practica3_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="Practica3_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> y <img src="Practica3_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"></a></li><li><a href="#6">4.-Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiemp discreto la fucion se debe llamar energiadis. La funci&oacute;n recibe dos param&eacute;tros de entrada: el vector de tiempo y las alturas asignadas. La funci&oacute;n regresa la energia de la se&ntilde;al y despliega la gr&aacute;fica de la se&ntilde;al.</a></li><li><a href="#7">5.-Resuelva el problema 3.1.1 c) de Lathi</a></li><li><a href="#8">6.-Resuelve el problema 3.2.3 de Lathi</a></li></ul></div><h2 id="1">Objetivos</h2><div><ul><li>Manipulaci&oacute;n b&aacute;sica de MATLAB</li><li>Gr&aacute;ficas de se&ntilde;ales reales y complejas discretas</li><li>Transformaci&oacute;n de se&ntilde;ales discretas (escalamientos y traslaciones)</li><li>Calculo de energ&iacute;a y potencia de se&ntilde;ales discretas</li></ul></div><h2 id="2">Introducci&oacute;n</h2><p>DESCRIPTIVE TEXT</p><h2 id="3">1.-Crea una funci&oacute;n que se llame fun1 y reciba dos parametros <img src="Practica3_eq01003107565813904020.png" alt="$\Omega$"> y <img src="Practica3_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe regresar la evaluaci&oacute;n <img src="Practica3_eq03646802660506946535.png" alt="$f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$">, esta funci&oacute;n debe trabajar con <img src="Practica3_eq02250910504099747793.png" alt="$r\in R^+$">, <img src="Practica3_eq16652459112341690445.png" alt="$\Omega\in R$"> y <img src="Practica3_eq13105139821992525800.png" alt="$n\in  N^n$">.</h2><pre class="language-matlab"><span class="keyword">function</span> f= fun1( W,n,r )
+  </style></head><body><div class="content"><h1>Pr&aacute;ctica 3: Se&ntilde;ales en tiempo discreto</h1><!--introduction--><p>Caudillo Barbosa Eric</p><p>Olea Garc&iacute;a Bryan</p><p>Robles Mart&iacute;nez Dario Antonio</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos</a></li><li><a href="#2">INTRODUCCI&Oacute;N</a></li><li><a href="#9">1.-Crea una funci&oacute;n que se llame fun1 y reciba dos parametros <img src="Practica3_eq01003107565813904020.png" alt="$\Omega$"> y <img src="Practica3_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe regresar la evaluaci&oacute;n <img src="Practica3_eq03646802660506946535.png" alt="$f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$">, esta funci&oacute;n debe trabajar con <img src="Practica3_eq02250910504099747793.png" alt="$r\in R^+$">, <img src="Practica3_eq16652459112341690445.png" alt="$\Omega\in R$"> y <img src="Practica3_eq13105139821992525800.png" alt="$n\in  N^n$">.</a></li><li><a href="#10">2.-Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="Practica3_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> para <img src="Practica3_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="Practica3_eq00212765013998882747.png" alt="$a=0.9$"></a></li><li><a href="#11">3.-Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="Practica3_eq08869918233192190351.png" alt="$f[n]$"> para <img src="Practica3_eq12706977765372392117.png" alt="$r=1.1$">, <img src="Practica3_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="Practica3_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="Practica3_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> y <img src="Practica3_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"></a></li><li><a href="#12">4.-Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiemp discreto la fucion se debe llamar energiadis. La funci&oacute;n recibe dos param&eacute;tros de entrada: el vector de tiempo y las alturas asignadas. La funci&oacute;n regresa la energia de la se&ntilde;al y despliega la gr&aacute;fica de la se&ntilde;al.</a></li><li><a href="#13">5.-Resuelva el problema 3.1.1 c) de Lathi</a></li><li><a href="#14">6.-Resuelve el problema 3.2.3 de Lathi</a></li></ul></div><h2 id="1">Objetivos</h2><div><ul><li>Manipulaci&oacute;n b&aacute;sica de MATLAB</li><li>Gr&aacute;ficas de se&ntilde;ales reales y complejas discretas</li><li>Transformaci&oacute;n de se&ntilde;ales discretas (escalamientos y traslaciones)</li><li>Calculo de energ&iacute;a y potencia de se&ntilde;ales discretas</li></ul></div><h2 id="2">INTRODUCCI&Oacute;N</h2><p><b>Escalamiento horizontal de se&ntilde;ales en tiempo discreto</b></p><div><ul><li><b>x2[n] = x1[an]</b></li></ul></div><div><ul><li>Esta operaci&oacute;n originar&aacute; la aparici&oacute;n de nuevas muestras iguales a cero (a &lt; 1) o la desaparici&oacute;n de algunas muestras (a &gt; 1), debido a que la variable independiente "n" solo puede tomar valores enteros</li><li>Cuando se tiene la operaci&oacute;n de escalamiento en tiempo acompa&ntilde;ada de un desplazamiento, primero se debe escalar la se&ntilde;al y luego se debe desplazar. Estas operaciones tampoco son conmutativas entre s&iacute;.</li></ul></div><p><b>Ejemplos:</b></p><p>*Si x(t) es una se&ntilde;al de audio en una grabadora de cinta, x( 2 t ) ser&iacute;a la misma grabaci&oacute;n pero reproducida al doble de la velocidad) y x( &frac12; t ) reproducida a la mitad de la velocidad.</p><p>*x2[n] = x1[ &frac12; n + 1]</p><pre class="codeinput">n=-2:5;
+x=[0 0 0 1 2 2 2 2 ];
+Gd2(n,x)
+title(<span class="string">'x2[n]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_01.png" alt=""> <pre class="codeinput">n1=-6:8;
+x1=[0 0 0 0 0 0 1 0 2 0 2 0 2 0 2];
+Gd2(n1,x1)
+title(<span class="string">'x1[ &frac12; n + 1]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_02.png" alt=""> <p><b>Desplazamiento</b></p><div><ul><li><b>x2[n] = x1[n + n0]</b></li></ul></div><div><ul><li>Equivale f&iacute;sicamente a adelantar o atrasar la se&ntilde;al</li><li>Gr&aacute;ficamente equivale a desplazar la se&ntilde;al hacia la izquierda (adelanto) o hacia la derecha (atraso).</li><li>El adelanto de una se&ntilde;al no es posible f&iacute;sicamente, pero es muy &uacute;til su consideraci&oacute;n en el An&aacute;lisis de Se&ntilde;ales</li><li>En la pr&aacute;ctica se pueden presentar dos casos:</li></ul></div><pre>t0&gt;0:Adelanto     t0&lt;0:Atraso</pre><p><b>Ejemplo:</b></p><p>x2[n] = x1[n + 2]</p><pre class="codeinput">n2=-2:5;
+x2=[0 0 0 1 2 2 2 2];
+Gd2 (n2,x2)
+title(<span class="string">'x2[n]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_03.png" alt=""> <pre class="codeinput">n3=-2:5;
+x3=[0 1 2 2 2 2 2 2];
+Gd2 (n3,x3)
+title(<span class="string">'x1[n + 2]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_04.png" alt=""> <p><b>Escalamiento en Magnitud</b></p><p>*Equivale a multiplicar la se&ntilde;al por una constante real. *En la pr&aacute;ctica se pueden presentar cuatro casos:</p><p>A &gt; 1 : Amplificador.</p><p>A &lt; 1 : Atenuador.</p><p>A = 1 : Aislador.</p><p>A = -1 : Inversor.</p><p><b>Ejemplo:</b></p><p>x2[n] = 2x1[n]</p><pre class="codeinput">n4=-2:5;
+x4=[0 0 0 1 2 2 2 2];
+Gd2 (n4,x4)
+title(<span class="string">'x2[n]'</span>)
+</pre><img vspace="5" hspace="5" src="Practica3_05.png" alt=""> <pre class="codeinput">n5=-2:5;
+x5=[0 0 0 2 4 4 4 4];
+Gd2 (n5,x5)
+title(<span class="string">'2x1[n]'</span>)
+</pre><img vspace="5" hspace="5" src="Practica3_06.png" alt=""> <h2 id="9">1.-Crea una funci&oacute;n que se llame fun1 y reciba dos parametros <img src="Practica3_eq01003107565813904020.png" alt="$\Omega$"> y <img src="Practica3_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe regresar la evaluaci&oacute;n <img src="Practica3_eq03646802660506946535.png" alt="$f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$">, esta funci&oacute;n debe trabajar con <img src="Practica3_eq02250910504099747793.png" alt="$r\in R^+$">, <img src="Practica3_eq16652459112341690445.png" alt="$\Omega\in R$"> y <img src="Practica3_eq13105139821992525800.png" alt="$n\in  N^n$">.</h2><pre class="language-matlab"><span class="keyword">function</span> f= fun1( W,n,r )
 f=(r.^n.*cos(W.*n))+(r.^n.*sin(W.*n).*i);
 <span class="keyword">end</span>
-</pre><h2 id="4">2.-Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="Practica3_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> para <img src="Practica3_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="Practica3_eq00212765013998882747.png" alt="$a=0.9$"></h2><pre class="codeinput">f=@(n,a) (n.*a.^n).*heaviside(n);
+</pre><h2 id="10">2.-Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="Practica3_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> para <img src="Practica3_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="Practica3_eq00212765013998882747.png" alt="$a=0.9$"></h2><pre class="codeinput">f=@(n,a) (n.*a.^n).*heaviside(n);
 n=-2:10;
 Gd2(n,f(n,0.9))
-</pre><img vspace="5" hspace="5" src="Practica3_01.png" alt=""> <h2 id="5">3.-Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="Practica3_eq08869918233192190351.png" alt="$f[n]$"> para <img src="Practica3_eq12706977765372392117.png" alt="$r=1.1$">, <img src="Practica3_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="Practica3_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="Practica3_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> y <img src="Practica3_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"></h2><pre class="codeinput">n=-2:20;
+</pre><img vspace="5" hspace="5" src="Practica3_07.png" alt=""> <h2 id="11">3.-Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="Practica3_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="Practica3_eq08869918233192190351.png" alt="$f[n]$"> para <img src="Practica3_eq12706977765372392117.png" alt="$r=1.1$">, <img src="Practica3_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="Practica3_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="Practica3_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"> y <img src="Practica3_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="Practica3_eq08984225997457563733.png" alt="$n$"></h2><pre class="codeinput">n=-2:20;
 f=fun1(0.5,n,1.1);
 Gd3(n,real(f),imag(f))
 subplot(1,2,1)
 stem(n,abs(f))
 subplot(1,2,2)
 stem(n,angle(f))
-</pre><img vspace="5" hspace="5" src="Practica3_02.png" alt=""> <h2 id="6">4.-Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiemp discreto la fucion se debe llamar energiadis. La funci&oacute;n recibe dos param&eacute;tros de entrada: el vector de tiempo y las alturas asignadas. La funci&oacute;n regresa la energia de la se&ntilde;al y despliega la gr&aacute;fica de la se&ntilde;al.</h2><pre class="language-matlab"><span class="keyword">function</span> E=energiadis(t,h)
+</pre><img vspace="5" hspace="5" src="Practica3_08.png" alt=""> <h2 id="12">4.-Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiemp discreto la fucion se debe llamar energiadis. La funci&oacute;n recibe dos param&eacute;tros de entrada: el vector de tiempo y las alturas asignadas. La funci&oacute;n regresa la energia de la se&ntilde;al y despliega la gr&aacute;fica de la se&ntilde;al.</h2><pre class="language-matlab"><span class="keyword">function</span> E=energiadis(t,h)
 E=sum(h.*h,2);
 Gd2(t,h)
 <span class="keyword">end</span>
-</pre><h2 id="7">5.-Resuelva el problema 3.1.1 c) de Lathi</h2><pre class="codeinput">t=-3:3;
+</pre><h2 id="13">5.-Resuelva el problema 3.1.1 c) de Lathi</h2><pre class="codeinput">t=-3:3;
 n=[-9 -6 -3 0 3 6 9];
 E=energiadis(t,n)
 </pre><pre class="codeoutput">
@@ -91,31 +115,29 @@ E =
 
    252
 
-</pre><img vspace="5" hspace="5" src="Practica3_03.png" alt=""> <h2 id="8">6.-Resuelve el problema 3.2.3 de Lathi</h2><pre class="codeinput">x=@(n) n;
-n=-10:10;
-<span class="comment">%-x[n]</span>
-Gd2(n,-x(n))
-title(<span class="string">'-x(n)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>);
-<span class="comment">%x[n+6]</span>
-Gd2(n,x(n+6))
-title(<span class="string">'x(n+6)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>);
-<span class="comment">%x[n-6]</span>
-Gd2(n,x(n-6))
-title(<span class="string">'x(n-6)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>);
-<span class="comment">%x[3n]</span>
-Gd2(n,x(3.*n))
-title(<span class="string">'x(3n)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>);
-<span class="comment">%x[n/3]</span>
-Gd2(n,x(n./3))
-title(<span class="string">'x(n/3)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>);
-<span class="comment">%x[3-n]</span>
-Gd2(n,x(3-n))
-title(<span class="string">'x(3-n)'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>);
-</pre><img vspace="5" hspace="5" src="Practica3_04.png" alt=""> <img vspace="5" hspace="5" src="Practica3_05.png" alt=""> <img vspace="5" hspace="5" src="Practica3_06.png" alt=""> <img vspace="5" hspace="5" src="Practica3_07.png" alt=""> <img vspace="5" hspace="5" src="Practica3_08.png" alt=""> <img vspace="5" hspace="5" src="Practica3_09.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017a</a><br></p></div><!--
+</pre><img vspace="5" hspace="5" src="Practica3_09.png" alt=""> <h2 id="14">6.-Resuelve el problema 3.2.3 de Lathi</h2><p><b>a) x[-n]</b></p><p><b>b) x[n+6]</b></p><p><b>c) x[n-6]</b></p><p><b>d) x[3n]</b></p><p><b>e) x[n/3]</b></p><pre class="codeinput">n=0:6;
+x=[0 1 2 3 2 1 0];
+Gd2(n,x)
+title(<span class="string">'x[n]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_10.png" alt=""> <pre class="codeinput">Gd2(-n,x)
+title(<span class="string">'x[-n]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_11.png" alt=""> <pre class="codeinput">Gd2(n-6,x)
+title(<span class="string">'x[n+6]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_12.png" alt=""> <pre class="codeinput">Gd2(n+6,x)
+title(<span class="string">'x[n-6]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_13.png" alt=""> <pre class="codeinput">x1=[0 3 0 0 0 0 0];
+Gd2(n,x1)
+title(<span class="string">'x[3n]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_14.png" alt=""> <pre class="codeinput">Gd2(3*n,x)
+title(<span class="string">'x[n/3]'</span>);
+</pre><img vspace="5" hspace="5" src="Practica3_15.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Práctica 3: Señales en tiempo discreto
 % Caudillo Barbosa Eric
+%
 % Olea García Bryan
+%
+% Robles Martínez Dario Antonio
 %% Objetivos
 % 
 % * Manipulación básica de MATLAB
@@ -123,8 +145,80 @@ title(<span class="string">'x(3-n)'</span>,<span class="string">'Interpreter'</s
 % * Transformación de señales discretas (escalamientos y traslaciones)
 % * Calculo de energía y potencia de señales discretas
 % 
-%% Introducción
-% DESCRIPTIVE TEXT
+%% INTRODUCCIÓN
+% *Escalamiento horizontal de señales en tiempo discreto*
+%%
+% * *x2[n] = x1[an]*
+%
+% * Esta operación originará la aparición de nuevas muestras iguales a cero (a < 1) o la desaparición de algunas muestras (a > 1), debido a que la variable independiente "n" solo puede tomar valores enteros
+% * Cuando se tiene la operación de escalamiento en tiempo acompañada de un desplazamiento, primero se debe escalar la señal y luego se debe desplazar. Estas operaciones tampoco son conmutativas entre sí.
+%
+% *Ejemplos:*
+%
+% *Si x(t) es una señal de audio en una grabadora de cinta, x( 2 t ) sería la misma grabación pero reproducida al doble de la velocidad) y x( ½ t ) reproducida a la mitad de la velocidad.
+%
+% *x2[n] = x1[ ½ n + 1]
+n=-2:5;
+x=[0 0 0 1 2 2 2 2 ];
+Gd2(n,x)
+title('x2[n]');
+%%
+n1=-6:8;
+x1=[0 0 0 0 0 0 1 0 2 0 2 0 2 0 2];
+Gd2(n1,x1)
+title('x1[ ½ n + 1]');
+
+%%
+% *Desplazamiento*
+%
+% * *x2[n] = x1[n + n0]*
+%
+% * Equivale físicamente a adelantar o atrasar la señal
+% * Gráficamente equivale a desplazar la señal hacia la izquierda (adelanto) o hacia la derecha (atraso).
+% * El adelanto de una señal no es posible físicamente, pero es muy útil su consideración en el Análisis de Señales
+% * En la práctica se pueden presentar dos casos: 
+%
+%  t0>0:Adelanto     t0<0:Atraso
+%
+% *Ejemplo:*
+%
+% x2[n] = x1[n + 2]
+%
+n2=-2:5;
+x2=[0 0 0 1 2 2 2 2];
+Gd2 (n2,x2)
+title('x2[n]');
+%%
+n3=-2:5;
+x3=[0 1 2 2 2 2 2 2];
+Gd2 (n3,x3)
+title('x1[n + 2]');
+%%
+% *Escalamiento en Magnitud*
+% 
+% *Equivale a multiplicar la señal por una constante real.
+% *En la práctica se pueden presentar cuatro casos:
+%
+% A > 1 : Amplificador.
+%
+% A < 1 : Atenuador.
+%
+% A = 1 : Aislador.
+%
+% A = -1 : Inversor.
+%
+% *Ejemplo:*
+%
+% x2[n] = 2x1[n]
+n4=-2:5;
+x4=[0 0 0 1 2 2 2 2];
+Gd2 (n4,x4)
+title('x2[n]')
+%%
+n5=-2:5;
+x5=[0 0 0 2 4 4 4 4];
+Gd2 (n5,x5)
+title('2x1[n]')
 %% 1.-Crea una función que se llame fun1 y reciba dos parametros $\Omega$ y $a$ la función debe regresar la evaluación $f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$, esta función debe trabajar con $r\in R^+$, $\Omega\in R$ y $n\in  N^n$.
 %   
 %   function f= fun1( W,n,r )
@@ -155,25 +249,35 @@ t=-3:3;
 n=[-9 -6 -3 0 3 6 9];
 E=energiadis(t,n)
 %% 6.-Resuelve el problema 3.2.3 de Lathi
-x=@(n) n;
-n=-10:10;
-%-x[n]
-Gd2(n,-x(n))
-title('-x(n)','Interpreter','latex');
-%x[n+6]
-Gd2(n,x(n+6))
-title('x(n+6)','Interpreter','latex');
-%x[n-6]
-Gd2(n,x(n-6))
-title('x(n-6)','Interpreter','latex');
-%x[3n]
-Gd2(n,x(3.*n))
-title('x(3n)','Interpreter','latex');
-%x[n/3]
-Gd2(n,x(n./3))
-title('x(n/3)','Interpreter','latex');
-%x[3-n]
-Gd2(n,x(3-n))
-title('x(3-n)','Interpreter','latex');
+% *a) x[-n]*
+%%
+% *b) x[n+6]*
+%%
+% *c) x[n-6]*
+%%
+% *d) x[3n]*
+%%
+% *e) x[n/3]*
+
+n=0:6;
+x=[0 1 2 3 2 1 0];
+Gd2(n,x)
+title('x[n]');
+%%
+Gd2(-n,x)
+title('x[-n]');
+%%
+Gd2(n-6,x)
+title('x[n+6]');
+%%
+Gd2(n+6,x)
+title('x[n-6]');
+%%
+x1=[0 3 0 0 0 0 0];
+Gd2(n,x1)
+title('x[3n]');
+%%
+Gd2(3*n,x)
+title('x[n/3]');
 ##### SOURCE END #####
 --></body></html>

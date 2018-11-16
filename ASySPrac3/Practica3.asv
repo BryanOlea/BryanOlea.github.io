@@ -26,65 +26,16 @@
 % *x2[n] = x1[ ½ n + 1]
 n=-2:5;
 x=[0 0 0 1 2 2 2 2 ];
-Gd2(n,x)
+stem(n,x,'filled')
 title('x2[n]');
 %%
+figure
 n1=-6:8;
 x1=[0 0 0 0 0 0 1 0 2 0 2 0 2 0 2];
-Gd2(n1,x1)
+stem(n1,x1,'filled');
+xlabel('n1')
+xlabel('x1(n1)')
 title('x1[ ½ n + 1]');
-
-%%
-% *Desplazamiento*
-%
-% * *x2[n] = x1[n + n0]*
-%
-% * Equivale físicamente a adelantar o atrasar la señal
-% * Gráficamente equivale a desplazar la señal hacia la izquierda (adelanto) o hacia la derecha (atraso).
-% * El adelanto de una señal no es posible físicamente, pero es muy útil su consideración en el Análisis de Señales
-% * En la práctica se pueden presentar dos casos: 
-%
-%  t0>0:Adelanto     t0<0:Atraso
-%
-% *Ejemplo:*
-%
-% x2[n] = x1[n + 2]
-%
-n2=-2:5;
-x2=[0 0 0 1 2 2 2 2];
-Gd2 (n2,x2)
-title('x2[n]');
-%%
-n3=-2:5;
-x3=[0 1 2 2 2 2 2 2];
-Gd2 (n3,x3)
-title('x1[n + 2]');
-%%
-% *Escalamiento en Magnitud*
-% 
-% *Equivale a multiplicar la señal por una constante real.
-% *En la práctica se pueden presentar cuatro casos:
-%
-% A > 1 : Amplificador.
-%
-% A < 1 : Atenuador.
-%
-% A = 1 : Aislador.
-%
-% A = -1 : Inversor.
-%
-% *Ejemplo:*
-%
-% x2[n] = 2x1[n]
-n4=-2:5;
-x4=[0 0 0 1 2 2 2 2];
-Gd2 (n4,x4)
-title('x2[n]')
-%%
-n5=-2:5;
-x5=[0 0 0 2 4 4 4 4];
-Gd2 (n5,x5)
-title('2x1[n]')
 %% 1.-Crea una función que se llame fun1 y reciba dos parametros $\Omega$ y $a$ la función debe regresar la evaluación $f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$, esta función debe trabajar con $r\in R^+$, $\Omega\in R$ y $n\in  N^n$.
 %   
 %   function f= fun1( W,n,r )
